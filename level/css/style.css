@@ -1,0 +1,17 @@
+.thumbnail {
+  display: inline-block; /* ここがポイント */
+  height: 250px;
+  margin-right: 15px;
+  margin-bottom: 15px;
+}
+.thumbnail img {
+  height: 100%;
+}
+
+.faceimages {
+    height: 250px;
+  }
+
+li {
+  list-style: none;
+}
