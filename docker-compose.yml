@@ -14,6 +14,8 @@ services:
     ports:
       - "3306:3306"
     restart: always
+    env_file:
+      - ./.env
     environment:
       MYSQL_ROOT_PASSWORD: ${ROOTPASS}
       MYSQL_DATABASE: ${DATABASE}
