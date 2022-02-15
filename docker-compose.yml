@@ -40,7 +40,7 @@ services:
     networks:
       - level000net2
     volumes:
-      - ~/dockers/com_folder2/level:/var/www/html
+      - ./level:/var/www/html
     ports:
       - "8090:80"
     restart: always
