@@ -5,14 +5,14 @@ services:
       context: ./mysql
       dockerfile: Dockerfile
     platform: linux/x86_64
+    ports:
+      - "3306:3306"
     networks:
       - level000net2
     volumes:
       - mysql000vol2:/var/lib/mysql
-      - ./DB:/tmp
-      - ./mysql/my.cnf:/etc/my.cnf
-    ports:
-      - "3306:3306"
+        #- ./mysql/my.cnf:/etc/my.cnf
+      - ./nitdb.d:/docker-entrypoint-initdb.d
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: ${ROOTPASS}
@@ -28,7 +28,7 @@ services:
     volumes:
       - apa000vol2:/usr/local/apache2/htdocs/
     ports:
-      - "8080:80"
+      - "8092:80"
   php000level2:
     build: 
       context: ./php
