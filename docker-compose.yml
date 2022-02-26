@@ -38,7 +38,7 @@ services:
     networks:
       - level000net2
     volumes:
-      - ./level:/var/www/html
+      - ./php/level:/var/www/html
     ports:
       - "8090:80"
     restart: always
