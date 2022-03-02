@@ -278,42 +278,41 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['sex'] ==='man' ){
 
   $imagelink = 'face_image';
   
-  if($salary <= 1000){
-    $salary2 = $salary * 0.05;
-  }else{
-    $salary2  = 50;
+  $salary2 = $salary / 10 -30 ;
+  if ( $salary2 > 100 ){
+    $salary2 = 100 ;
   }
 
   $face2 = 1.5 * $face;
-  $age2 = 46 - $age ;
+  $age2 = abs($age -27) ;
   $hight2 = $hight - 150 ;
-  $weight2 = abs(($weight / ($hight*$hight/10000)-20)*2);
+  $weight2 = abs($weight / ($hight*$hight/10000)-20)*2;
 
 
   if(isset($_POST['workplace'])){
 
-    $sql = "SELECT T1.name,T1.age,T1.face_image,T1.hight,T1.salary FROM bbs AS T1 WHERE (3.5 * $face2 + 3 * $salary2 + 1.5 * $age2 + 2 * $hight2 - $weight2) > (4 * T1.face2 + 3 * T1.salary2 + 2 * T1.age2  + T1.hight2 - T1.weight2) ORDER BY (4 * T1.face2 + 3 * T1.salary2 + 2 * T1.age2 + T1.hight2 - T1.weight2) DESC LIMIT 10";
+    $sql = "SELECT T1.name,T1.age,T1.face_image,T1.hight,T1.salary FROM bbs AS T1 WHERE (3.5 * $face2 + 3 * $salary2 - 1.5 * $age2 + 2 * $hight2 - $weight2) > (4 * T1.face2 + 2 * T1.salary2 - T1.age2  + T1.hight2 - T1.weight2) ORDER BY (4 * T1.face2 + 2 * T1.salary2 - T1.age2  + T1.hight2 - T1.weight2) DESC LIMIT 10";
 
   }elseif(isset($_POST['jointparty'])){
   
-    $sql = "SELECT T1.name,T1.age,T1.face_image,T1.hight,T1.salary FROM bbs AS T1 WHERE (4 * $face2 + 3 * $salary2 + 1 * $age2 + 2 * $hight2 - $weight2) > (5 * T1.face2 + 3 * T1.age2 - T1.weight2) ORDER BY (5 * T1.face2 + 3 * T1.age2 - T1.weight2) DESC LIMIT 10";
+    $sql = "SELECT T1.name,T1.age,T1.face_image,T1.hight,T1.salary FROM bbs AS T1 WHERE (5 * $face2 + 3 * $salary2 - 2 * $age2 + $hight2 - $weight2) > (8 * T1.face2 - 2 * T1.age2 + T1.hight2 - T1.weight2) ORDER BY (8 * T1.face2 - 2 * T1.age2 + T1.hight2 - T1.weight2) DESC LIMIT 10";
 
 
   }elseif(isset($_POST['introduction'])){
 
-    $sql = "SELECT T1.name,T1.age,T1.face_image,T1.hight,T1.salary FROM bbs AS T1 WHERE (3 * $face2 + 4 * $salary2 + 1 * $age2 + 2 * $hight2 - $weight2) > (4 * T1.face2 + 3 * T1.salary2 + 2 * T1.age2 + T1.hight2 - T1.weight2) ORDER BY (4 * T1.face2 + 3 * T1.salary2 + 2 * T1.age2 + T1.hight2 - T1.weight2) DESC LIMIT 10";
+    $sql = "SELECT T1.name,T1.age,T1.face_image,T1.hight,T1.salary FROM bbs AS T1 WHERE (2 * $face2 + 4 * $salary2 - $age2 + 2 * $hight2 - $weight2) > (2 * T1.face2 + 4 * T1.salary2 - T1.age2 + 1.5 * T1.hight2 - T1.weight2) ORDER BY (2 * T1.face2 + 4 * T1.salary2 - T1.age2 + 1.5 * T1.hight2 - T1.weight2) DESC LIMIT 10";
 
   }elseif(isset($_POST['tinder'])){
 
-    $sql = "SELECT T1.name,T1.age,T1.face_image,T1.hight,T1.salary FROM bbs AS T1 WHERE (6 * $face2 + $salary2 + 2 * $age2 + $hight2 - $weight2) > (8 * T1.face2 + 3 * T1.age2 - T1.weight2) ORDER BY (8 * T1.face2 + 3 * T1.age2 - T1.weight2) DESC LIMIT 10";
+    $sql = "SELECT T1.name,T1.age,T1.face_image,T1.hight,T1.salary FROM bbs AS T1 WHERE (8 * $face2 - 2 * $age2 + $hight2 - $weight2) > (9.5 * T1.face2 - T1.age2 + T1.hight2 - T1.weight2) ORDER BY (9.5 * T1.face2 - T1.age2 + T1.hight2 - T1.weight2) DESC LIMIT 10";
 
   }elseif(isset($_POST['pairs'])){
 
-    $sql = "SELECT T1.name,T1.age,T1.face_image,T1.hight,T1.salary FROM bbs AS T1 WHERE (5 * $face2 + 2 * $salary2 + 1.5 * $age2 + $hight2 - 2 * $weight2) > (6 * T1.face2 + 1.5 * T1.age2 - 2 * T1.weight2) ORDER BY (6 * T1.face2 + 1.5 * T1.age2 - 2 * T1.weight2) DESC LIMIT 10";
+    $sql = "SELECT T1.name,T1.age,T1.face_image,T1.hight,T1.salary FROM bbs AS T1 WHERE (6 * $face2 + 2 * $salary2 - $age2 + $hight2 - $weight2) > (6.5 * T1.face2 + T1.salary2 - T1.age2 + T1.hight2 - T1.weight2) ORDER BY (6.5 * T1.face2 + T1.salary2 - T1.age2 + T1.hight2 - T1.weight2) DESC LIMIT 10";
 
   }elseif(isset($_POST['club'])){
 
-    $sql = "SELECT T1.name,T1.age,T1.face_image,T1.hight,T1.salary FROM bbs AS T1 WHERE (6 * $face2 + $salary2 + 2 * $hight2 - $weight2) > (7 * T1.face2 + 2 * T1.age2 - T1.weight2) ORDER BY (7 * T1.face2 + 2 * T1.age2 - T1.weight2) DESC LIMIT 10";
+    $sql = "SELECT T1.name,T1.age,T1.face_image,T1.hight,T1.salary FROM bbs AS T1 WHERE (8 * $face2 + $salary2 + 2 * $hight2 - $weight2) > (9.5 * T1.face2 - 2 * T1.age2 + T1.hight2 - T1.weight2) ORDER BY (9.5 * T1.face2 - 2 * T1.age2 + T1.hight2 - T1.weight2) DESC LIMIT 10";
 
   }
 
@@ -334,43 +333,42 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['sex'] ==='man' ){
 
 }elseif($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['sex'] ==='woman'){
 
-  $imagelink = 'mface_image';
+ $imagelink = 'mface_image';
 
-  if($salary <= 1000){
-    $salary2 = $salary * 0.05;
-  }else{
-    $salary2  = 50;
+  $salary2 = $salary / 10 -30 ;
+  if ( $salary2 > 100 ){
+    $salary2 = 100 ;
   }
 
-  $face2 = $face * 0.4;
-  $salary2 = $salary * 0.067;
-  $age2 = 46 - $age ;
-  $hight2 = ($hight - 100) *0.34;
+  $face2 = 1.5 * $face;
+  $age2 = $age -23 ;
+  $hight2 = 30 ;
   $weight2 = ($weight / ($hight*$hight/10000)-20)*2;
+
 
   if(isset($_POST['workplace'])){
 
-    $sql = "SELECT T1.name,T1.age,T1.mface_image,T1.hight,T1.salary FROM mbbs AS T1 WHERE (6 * $face2 + 1.5 * $salary2 + 1.5 * $age2 + $hight2 - $weight2) > (3.5 * T1.face2 + 3 * T1.salary2 + 1.5 * T1.age2  + 2 * T1.hight2 - T1.weight2) ORDER BY (3.5 * T1.face2 + 3 * T1.salary2 + 1.5 * T1.age2  + 2 * T1.hight2 - T1.weight2) DESC LIMIT 10";
+    $sql = "SELECT T1.name,T1.age,T1.mface_image,T1.hight,T1.salary FROM mbbs AS T1 WHERE (4 * $face2 + 2* $salary2 - $age2 + $hight2 - $weight2) > (3.5 * T1.face2 + 3 * T1.salary2 + 1.5 * T1.age2  + 2 * T1.hight2 - T1.weight2) ORDER BY (3.5 * T1.face2 + 3 * T1.salary2 + 1.5 * T1.age2  + 2 * T1.hight2 - T1.weight2) DESC LIMIT 10";
 
   }elseif(isset($_POST['jointparty'])){
 
-    $sql = "SELECT T1.name,T1.age,T1.mface_image,T1.hight,T1.salary FROM mbbs AS T1 WHERE (7 * $face2 + 3 * $age2 - $weight2) > (4 * T1.face2 + T1.age2 + 3 * T1.salary2 + T1.hight2 - T1.weight2) ORDER BY (4 * T1.face2 + T1.age2 + 3 * T1.salary2 + T1.hight2 - T1.weight2) DESC LIMIT 10";
+    $sql = "SELECT T1.name,T1.age,T1.mface_image,T1.hight,T1.salary FROM mbbs AS T1 WHERE (8 * $face2 - 2 * $age2 + hight2 - $weight2) > (5 * T1.face2 - 2 * T1.age2 + 3 * T1.salary2 + T1.hight2 - T1.weight2) ORDER BY (5 * T1.face2 - 2 * T1.age2 + 3 * T1.salary2 + T1.hight2 - T1.weight2) DESC LIMIT 10";
 
   }elseif(isset($_POST['introduction'])){
 
-    $sql = "SELECT T1.name,T1.age,T1.mface_image,T1.hight,T1.salary FROM mbbs AS T1 WHERE (4 * $face2 + 3 * $salary2 + 2 * $age2 + 1 * $hight2 - $weight2) > (3 * T1.face2 + 4 * T1.salary2 + 1 * T1.age2 + 2 * T1.hight2 - T1.weight2) ORDER BY (3 * T1.face2 + 4 * T1.salary2 + 1 * T1.age2 + 2 * T1.hight2 - T1.weight2) DESC LIMIT 10";
+    $sql = "SELECT T1.name,T1.age,T1.mface_image,T1.hight,T1.salary FROM mbbs AS T1 WHERE (2 * $face2 + 4 * $salary2 - $age2 + 1.5 * $hight2 - $weight2) > (2 * T1.face2 + 4 * T1.salary2 - T1.age2 + 2 * T1.hight2 - T1.weight2) ORDER BY (2 * T1.face2 + 4 * T1.salary2 - T1.age2 + 2 * T1.hight2 - T1.weight2) DESC LIMIT 10";
 
   }elseif(isset($_POST['tinder'])){
 
-    $sql = "SELECT T1.name,T1.age,T1.mface_image,T1.hight,T1.salary FROM mbbs AS T1 WHERE (9 * $face2 + 3 * $age2 - $weight2) > (6 * T1.face2 + T1.salary2 + 2 * T1.age2 + T1.hight2 - T1.weight2) ORDER BY (6 * T1.face2 + T1.salary2 + 2 * T1.age2 + T1.hight2 - T1.weight2) DESC LIMIT 10";
+    $sql = "SELECT T1.name,T1.age,T1.mface_image,T1.hight,T1.salary FROM mbbs AS T1 WHERE (9 * $face2 - $age2 + hight2 - $weight2) > (8 * T1.face2 - 2 * T1.age2 + T1.hight2 - T1.weight2) ORDER BY (8 * T1.face2 - 2 * T1.age2 + T1.hight2 - T1.weight2) DESC LIMIT 10";
 
   }elseif(isset($_POST['pairs'])){
 
-    $sql = "SELECT T1.name,T1.age,T1.mface_image,T1.hight,T1.salary FROM mbbs AS T1 WHERE (7.5 * $face2 + 2 * $age2 - 2 * $weight2) > (5 * T1.face2 + 2 * T1.hight2 + 1.5 * T1.age2 + T1.hight2 - T1.weight2) ORDER BY (5 * T1.face2 + 2 * T1.hight2 + 1.5 * T1.age2 + T1.hight2 - T1.weight2) DESC LIMIT 10";
+    $sql = "SELECT T1.name,T1.age,T1.mface_image,T1.hight,T1.salary FROM mbbs AS T1 WHERE (6.5 * $face2 + $salary2 - $age2 + $hight2 - $weight2) > (6 * T1.face2 + 2 * T1.salary2 - T1.age2 + T1.hight2 - T1.weight2) ORDER BY (6 * T1.face2 + 2 * T1.salary2 - T1.age2 + T1.hight2 - T1.weight2) DESC LIMIT 10";
 
   }elseif(isset($_POST['club'])){
 
-    $sql = "SELECT T1.name,T1.age,T1.mface_image,T1.hight,T1.salary FROM mbbs AS T1 WHERE (8 * $face2 + 2 * $age2 - $weight2) > (6 * T1.face2 + T1.salary2 + 2 * T1.hight2 - T1.weight2) ORDER BY (6 * T1.face2 + T1.salary2 + 2 * T1.hight2 - T1.weight2) DESC LIMIT 10";
+    $sql = "SELECT T1.name,T1.age,T1.mface_image,T1.hight,T1.salary FROM mbbs AS T1 WHERE (9.5 * $face2 - 2 * $age2 + $hight2 - $weight2) > (8 * T1.face2 + T1.salary2 + 2 * T1.hight2 - T1.weight2) ORDER BY (8 * T1.face2 + T1.salary2 + 2 * T1.hight2 - T1.weight2) DESC LIMIT 10";
   
   }
 
