@@ -12,7 +12,6 @@ services:
     volumes:
       - mysql000vol2:/var/lib/mysql
         #- ./mysql/my.cnf:/etc/my.cnf
-      - ./nitdb.d:/docker-entrypoint-initdb.d
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: ${ROOTPASS}
